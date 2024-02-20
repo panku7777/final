@@ -1,0 +1,46 @@
+.genre-table-container {
+    width: 100%; /* Make the container fill the entire width */
+    height: 100%; /* Make the container fill the entire height */
+    padding: 20px; /* Add padding for spacing */
+  }
+  
+  .genre-table {
+    width: 100%; /* Make the table fill the entire width of its container */
+    height: 100%; /* Make the table fill the entire height of its container */
+    border-collapse: collapse; /* Collapse borders between cells */
+  }
+  
+  .genre-table th,
+  .genre-table td {
+    border: 1px solid #ddd; /* Add borders to table cells */
+    padding: 8px; /* Add padding for spacing */
+    text-align: left; /* Align text to the left */
+  }
+  
+  .genre-table th {
+    background-color: #f2f2f2; /* Add background color to table headers */
+  }
+  
+  .genre-table tr:nth-child(even) {
+    background-color: #f2f2f2; /* Alternate row background color */
+  }
+  
+  .genre-table tr:hover {
+    background-color: #ddd; /* Highlight row on hover */
+  }
+  
+  .edit-button {
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 5px 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    margin: 2px 2px;
+    cursor: pointer;
+  }
+  
+  /* Add more styles as needed */
+  

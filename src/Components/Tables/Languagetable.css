@@ -1,0 +1,45 @@
+/* LanguageTable.css */
+
+.language-table-container {
+  width: 100%;
+  height: 100%;
+  padding: 20px; /* Add padding for spacing */
+}
+
+.language-table {
+  width: 100%;
+  height: 100%;
+  border-collapse: collapse;
+}
+
+.language-table th,
+.language-table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+.language-table th {
+  background-color: #f2f2f2;
+}
+
+.language-table tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+.language-table tr:hover {
+  background-color: #ddd;
+}
+
+.edit-button {
+  background-color: #4CAF50;
+  border: none;
+  color: white;
+  padding: 5px 10px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 14px;
+  margin: 2px 2px;
+  cursor: pointer;
+}

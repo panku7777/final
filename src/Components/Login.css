@@ -1,0 +1,52 @@
+/* LoginStyles.css */
+.login-body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: url('https://cdn.pixabay.com/photo/2017/08/06/22/01/books-2596809_1280.jpg');
+  background-size: cover;
+  height: 100vh;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 60vh;
+  padding: 20px;
+  flex-direction: column;
+  width: 20vh;
+}
+
+.form {
+  width: 40%;
+  padding: 20px;
+  border-radius: 8px;
+  background-color: #fff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  margin-top: 0px;
+}
+
+.text-field {
+  width: 100%;
+  margin-bottom: 16px;
+  padding: 12px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  outline: none;
+}
+
+.button {
+  width: 100%;
+  padding: 12px;
+  background-color: #2196f3;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.typography {
+  text-align: center;
+}
