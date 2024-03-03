@@ -1,0 +1,87 @@
+/* DownloadCard.css */
+
+.download-card {
+    display: flex;
+    flex-direction: column;
+    max-width: 345px;
+    margin: 20px 20px 20px 0; /* Added right margin */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    transition: transform 0.3s;
+  }
+  
+  .card-image {
+    border-radius: 8px 8px 0 0;
+    height: 200px;
+    object-fit: cover;
+  }
+  
+  .card-content {
+    padding: 16px;
+  }
+  
+  .download-card .MuiTypography-root {
+    margin-bottom: 8px;
+  }
+  
+
+  .image-container {
+    width: 200px; /* Set the desired width */
+    height: 300px; /* Set the desired height */
+  }
+  
+  .cover-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  /* DownloadScreen.css */
+
+.container-fluid {
+    padding: 20px;
+  }
+  
+  .d-flex {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .shadow {
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
+  }
+  
+  .bg-body {
+    background-color: #fff; /* Set background color to white */
+  }
+  
+  .rounded {
+    border-radius: 10px; /* Add rounded corners */
+  }
+  
+  .cover-image {
+    width: 100%; /* Ensure the cover image fills its container */
+    max-width: 300px; /* Limit the maximum width of the cover image */
+    height: auto; /* Allow the height to adjust proportionally */
+    border-radius: 10px; /* Add rounded corners to the image */
+  }
+  
+  .text-end {
+    text-align: right; /* Align text to the right */
+  }
+  
+  .download-button-container {
+    margin-top: 20px; /* Add some space between details and the download button */
+  }
+  
+  .btn-primary {
+    background-color: #007bff; /* Set primary button color */
+    border-color: #007bff; /* Set primary button border color */
+  }
+  
+  .btn-primary:hover {
+    background-color: #0056b3; /* Darken button color on hover */
+    border-color: #0056b3; /* Darken button border color on hover */
+  }
+  
+  

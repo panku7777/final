@@ -1,0 +1,44 @@
+/* Homescreen.css */
+
+.homescreen-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.homescreen-search {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.homescreen-search .form-control,
+.homescreen-search select {
+    margin-right: 10px; /* Adjust spacing between inputs */
+}
+
+.homescreen-room-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.homescreen-room-list .room-card {
+    margin: 10px;
+}
+
+/* Style for the select dropdown */
+.form-control {
+    width: 200px; /* Adjust the width as needed */
+    margin-right: 10px; /* Add spacing between inputs */
+    color: black; /* Ensure the text color is visible */
+    background-color: white; /* Ensure the background color is visible */
+    border: 1px solid #ced4da; /* Add a border for clarity */
+}
+
+/* Style for the dropdown options */
+option {
+    color: black; /* Ensure the text color is visible */
+    background-color: white; /* Ensure the background color is visible */
+}

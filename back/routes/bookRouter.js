@@ -54,7 +54,32 @@ router.get("/getbookbyid/:id", async (req, res) => {
   try {
     const book = await Book.findById(bookId);
     if (book) {
-      res.status(200).json(book);
+      // Convert image data to base64 encoded strings
+      const coverImageBuffer = Buffer.from(book.coverImageURL.data, 'base64');
+      const base64CoverImage = coverImageBuffer.toString('base64');
+      const freeview1Buffer = Buffer.from(book.freeview1Url.data, 'base64');
+      const base64Freeview1 = freeview1Buffer.toString('base64');
+      const freeview2Buffer = Buffer.from(book.freeview2Url.data, 'base64');
+      const base64Freeview2 = freeview2Buffer.toString('base64');
+
+      // Construct the updated book object with base64 encoded image data
+      const updatedBook = {
+        ...book._doc,
+        coverImageURL: {
+          contentType: book.coverImageURL.contentType,
+          data: base64CoverImage
+        },
+        freeview1Url: {
+          contentType: book.freeview1Url.contentType,
+          data: base64Freeview1
+        },
+        freeview2Url: {
+          contentType: book.freeview2Url.contentType,
+          data: base64Freeview2
+        }
+      };
+
+      res.status(200).json(updatedBook);
     } else {
       res.status(404).json({ error: "Book not found" });
     }
@@ -63,27 +88,39 @@ router.get("/getbookbyid/:id", async (req, res) => {
     res.status(500).json({ error: "Internal Server Error" });
   }
 });
-// Other routes for getting all books, updating, and deleting
 
 
 
 router.get('/getallbooks', async (req, res) => {
   try {
-    const allBooks = await Book.find().select('title author ISBN genre publicationDate language publisher description coverImageURL');
+    const allBooks = await Book.find().select('title author ISBN genre publicationDate language publisher description coverImageURL freeview1Url freeview2Url display');
 
     // Convert image data to base64 encoded strings
     const updatedBooks = await Promise.all(allBooks.map(async (book) => {
       const coverImageBuffer = Buffer.from(book.coverImageURL.data, 'base64');
       const base64CoverImage = coverImageBuffer.toString('base64');
+      const freeview1Buffer = Buffer.from(book.freeview1Url.data, 'base64');
+      const base64Freeview1 = freeview1Buffer.toString('base64');
+      const freeview2Buffer = Buffer.from(book.freeview2Url.data, 'base64');
+      const base64Freeview2 = freeview2Buffer.toString('base64');
+      
       return {
         ...book._doc,
         coverImageURL: {
           contentType: book.coverImageURL.contentType,
           data: base64CoverImage
+        },
+        freeview1Url: {   // <-- Match frontend naming here
+          contentType: book.freeview1Url.contentType,
+          data: base64Freeview1
+        },
+        freeview2Url: {   // <-- Match frontend naming here
+          contentType: book.freeview2Url.contentType,
+          data: base64Freeview2
         }
       };
     }));
-
+    
     res.status(200).json(updatedBooks);
   } catch (error) {
     console.error(error);
@@ -98,33 +135,38 @@ router.put('/updatebook/:id', upload.fields([
   { name: 'freeview2', maxCount: 1 },
 ]), async (req, res) => {
   const bookId = req.params.id;
-  const updatedBookDetails = req.body;
+  const updatedBookDetails = {}; // Initialize an empty object to store updated book details
   const imageFiles = req.files;
 
   try {
-    if (imageFiles) {
-      if (imageFiles['coverImage']?.length > 0) {
-        updatedBookDetails.coverImage = {
+    // Check if any files are uploaded
+    if (imageFiles && Object.keys(imageFiles).length > 0) {
+      // If coverImage is uploaded, update its details
+      if (imageFiles['coverImage']) {
+        updatedBookDetails.coverImageURL = {
           data: imageFiles['coverImage'][0].buffer,
           contentType: imageFiles['coverImage'][0].mimetype,
         };
       }
-      
-      if (imageFiles['freeview1']?.length > 0) {
-        updatedBookDetails.freeview1 = {
+
+      // If freeview1 is uploaded, update its details
+      if (imageFiles['freeview1']) {
+        updatedBookDetails.freeview1Url = {
           data: imageFiles['freeview1'][0].buffer,
           contentType: imageFiles['freeview1'][0].mimetype,
         };
       }
-      
-      if (imageFiles['freeview2']?.length > 0) {
-        updatedBookDetails.freeview2 = {
+
+      // If freeview2 is uploaded, update its details
+      if (imageFiles['freeview2']) {
+        updatedBookDetails.freeview2Url = {
           data: imageFiles['freeview2'][0].buffer,
           contentType: imageFiles['freeview2'][0].mimetype,
         };
       }
     }
 
+    // Perform the update only if there are updated book details
     if (Object.keys(updatedBookDetails).length > 0) {
       await Book.updateOne({ _id: bookId }, { $set: updatedBookDetails });
       res.send('Book updated successfully');

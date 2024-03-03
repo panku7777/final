@@ -1,48 +1,58 @@
-import React from 'react';
-import { Tabs, Tab, Paper, Typography } from '@mui/material';
-import  styled  from '@emotion/styled';
+import React, { useState } from 'react';
+import './Navbar.css'; // Import your CSS file for styling
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faUser, faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
+import { useNavigate } from 'react-router-dom';
 
-const StyledPaper = styled(Paper)`
-  margin: 5px 20px;
-  padding: 20px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-`;
+const isHomeScreen = window.location.href.includes("/book");
+const isBookScreen = window.location.href.includes("/download/");
+const isDownloadScreen = window.location.href.includes("/list");
+const isMainscreen= window.location.href.includes("/home")
 
-function Adminscreen() {
-  const [value, setValue] = React.useState(0);
+const TopNavbar = () => {
+  const [showDropdown, setShowDropdown] = useState(false);
+  const navigate =useNavigate();
+  const user = JSON.parse(localStorage.getItem('currentuser'));
 
-  const handleChange = (event, newValue) => {
-    setValue(newValue);
+  const handleLogout = () => {
+    localStorage.removeItem('currentuser');
+    navigate('/login');
+    // Implement your logout logic here
+    console.log("Logout clicked");
+    // For demonstration, let's hide the dropdown after logout
+    setShowDropdown(false);
   };
 
-  return (
-    <div>
-      <StyledPaper elevation={3}>
-        <Typography variant='h4' align='center' style={{ fontSize: '30px', marginBottom: '20px' }}>
-          <b>Admin Panel</b>
-        </Typography>
-        <Tabs
-          value={value}
-          onChange={handleChange}
-          indicatorColor='primary'
-          textColor='primary'
-          orientation='vertical'
-          variant='scrollable'
-        >
-          <Tab label='Books' />
-          <Tab label='Users' />
-          <Tab label='Genre' />
-        </Tabs>
-        <div className='ml-3'>
-          {value === 0 && <Typography variant='h4'>Books Content</Typography>}
-          {value === 1 && <Typography variant='h4'>Users Content</Typography>}
-          {value === 2 && <Typography variant='h4'>Genre Content</Typography>}
-        </div>
-      </StyledPaper>
-    </div>
-  );
-}
+  const toggleDropdown = () => {
+    setShowDropdown(!showDropdown);
+  };
 
-export default Adminscreen;
+  if (isHomeScreen || isBookScreen || isDownloadScreen || isMainscreen) {
+    return (
+      <nav className="top-navbar">
+        <div className="navbar-heading">ELibrary</div>
+        <ul className="navbar-menu">
+          <li className="navbar-menu-item"><a href="/home">Home</a></li>
+          <li className="navbar-menu-item"><a href="/list">Downloads</a></li>
+          <li className="navbar-menu-item">
+            <div className="user-icon" onClick={toggleDropdown}>
+              <FontAwesomeIcon icon={faUser} />
+              {showDropdown && (
+                <div className="dropdown-content">
+                  <button onClick={handleLogout}>
+                    <FontAwesomeIcon icon={faSignOutAlt} />
+                    Logout
+                  </button>
+                </div>
+              )}
+            </div>
+          </li>
+        </ul>
+      </nav>
+    );
+  } else {
+    return null;
+  }
+};
+
+export default TopNavbar;

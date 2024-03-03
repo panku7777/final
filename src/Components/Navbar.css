@@ -1,0 +1,35 @@
+.top-navbar {
+    width: 100%; /* Adjust the width as needed */
+    height: 60px; /* Adjust the height as needed */
+    background-color: #333; /* Adjust the background color */
+    color: white; /* Adjust the text color */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+  }
+  
+  .navbar-heading {
+    font-size: 1.5rem; /* Adjust font size as needed */
+  }
+  
+  .navbar-menu {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+  }
+  
+  .navbar-menu-item {
+    margin-left: 20px;
+  }
+  
+  .navbar-menu-item a {
+    color: white;
+    text-decoration: none;
+  }
+  
+  .navbar-menu-item a:hover {
+    text-decoration: underline;
+  }
+  

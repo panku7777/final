@@ -6,18 +6,30 @@ import Navbar from './Components/Navbar'
 import Pnael from './Components/Pnael'
 import Books from './Components/Tables/Books'
 import Scans from './Components/user/Book'
+import Registration from './Components/Regscreen'
+import DownloadScreen from './Components/Screens/Downloadscreen'
+import DownloadList from './Components/Screens/Downloads'
+import BookDetails from './Components/Screens/Bookscreen'
+import Homescreen from './Components/Screens/Homescreen'
+
 
 
 
 function App(){
   return(
     <BrowserRouter>
+    <Navbar/>
 
     <Routes>
       <Route path='/login' element={<Loginscreen/>}></Route>
       <Route path='/book' element={<Scans/>}/>
+      <Route path="/reg" element={<Registration/>}/>
+      <Route path="/download/:bookid" element={<DownloadScreen/>}/>
+    <Route path="/list" element={<DownloadList/>}/>
+    <Route path="/all" element={<BookDetails/>}/>
       
       <Route path='/panel' element={<Pnael/>}/>
+      <Route path="/home" element={<Homescreen/>}/>
     </Routes>
     </BrowserRouter>
   )

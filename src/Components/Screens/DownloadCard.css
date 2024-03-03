@@ -1,0 +1,42 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+  }
+  
+  body {
+    background-image: url('https://c4.wallpaperflare.com/wallpaper/728/926/542/library-ladders-candles-shelves-wallpaper-preview.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+  
+  .download-card {
+    display: flex;
+    flex-direction: column;
+    max-width: 345px;
+    margin-bottom: 20px;
+    margin-left: 30px;
+    margin-top: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    transition: transform 0.3s ease;
+  }
+  
+  .download-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  }
+  
+  .card-image {
+    height: 100%;
+    border-radius: 8px 8px 0 0;
+  }
+  
+  .card-content {
+    flex: 1 0 auto;
+    overflow: auto;
+    max-height: 200px;
+    background-color: #f9f9f9;
+  }
+  

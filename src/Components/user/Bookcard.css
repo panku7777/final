@@ -1,0 +1,70 @@
+.book-card {
+    display: flex;
+    flex-direction: column;
+    max-width: 345px;
+    margin: 20px 20px 20px 0; /* Added right margin */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    transition: transform 0.3s;
+  }
+  
+  /* Rest of the CSS remains the same */
+  
+  
+  .book-cover {
+    border-radius: 8px 8px 0 0;
+    height: 200px;
+    object-fit: cover;
+  }
+
+  /* styles.css */
+   body{
+    background-image: url('https://c4.wallpaperflare.com/wallpaper/728/926/542/library-ladders-candles-shelves-wallpaper-preview.jpg'); /* Adjust the path to your background image */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100%;
+    /* margin-top:10px; */
+
+  }
+  
+    
+  
+  
+  .book-title {
+    font-weight: bold;
+    margin-bottom: 8px;
+  }
+  
+  .book-details {
+    margin-bottom: 8px;
+  }
+  
+  .book-description {
+    margin-bottom: 16px;
+    line-height: 1.5;
+    max-height: 100px;
+    overflow: hidden;
+  }
+  
+  .button-group {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px;
+  }
+  
+  .download-link {
+    text-decoration: none;
+  }
+  
+  /* DownloadScreen.css */
+
+.preview-image {
+    width: 100%; /* Ensure the image fills its container */
+    height: 300px; /* Set a fixed height for the images */
+    object-fit: cover; /* Ensure the image covers the entire container */
+    border-radius: 8px; /* Add rounded corners */
+  }
+  
+  

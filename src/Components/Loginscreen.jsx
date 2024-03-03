@@ -20,8 +20,9 @@ function Loginscreen() {
 
     try {
       const response = await axios.post('http://localhost:3005/api/users/login', user);
-      const result = response.data;
-      navigate('/panel');
+      const userData = response.data;
+      localStorage.setItem('userData', JSON.stringify(userData));
+      navigate('/book');
     } catch (err) {
       console.error(err);
       alert('Login Failed');

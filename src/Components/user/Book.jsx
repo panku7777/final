@@ -32,7 +32,7 @@ function BookList() {
       {!loading && !error && (
         <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center' }}>
           {books.map((book, index) => (
-            <BookCard key={index} book={book} />
+             book.display && <BookCard key={index} book={book} />
           ))}
         </div>
       )}
