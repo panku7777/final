@@ -22,7 +22,7 @@ function Loginscreen() {
       const response = await axios.post('http://localhost:3005/api/users/login', user);
       const userData = response.data;
       localStorage.setItem('userData', JSON.stringify(userData));
-      navigate('/book');
+      navigate('/home');
     } catch (err) {
       console.error(err);
       alert('Login Failed');

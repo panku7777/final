@@ -12,7 +12,7 @@ function DownloadList() {
       try {
         setLoading(true);
         // Fetch userId from localStorage
-        const userId = JSON.parse(localStorage.getItem('currentuser'))._id;
+        const userId = JSON.parse(localStorage.getItem('userData'))._id;
         const response = await axios.get(`http://localhost:3005/api/download/getdownloadsbyid/${userId}`);
         setDownloads(response.data);
         setLoading(false);

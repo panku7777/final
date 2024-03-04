@@ -26,7 +26,7 @@ const DownloadScreen = () => {
 
   const handleDownload = async () => {
     try {
-      const userId = JSON.parse(localStorage.getItem('currentuser'))._id;
+      const userId = JSON.parse(localStorage.getItem('userData'))._id;
   
       const requestData = {
         userId,

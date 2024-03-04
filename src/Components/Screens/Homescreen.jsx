@@ -14,6 +14,7 @@ const Homescreen = () => {
   const [loading, setLoading] = useState(false);
 
   const user = JSON.parse(localStorage.getItem('currentuser'));
+  console.log(user)
 
   if (!user) {
     window.location.href = '/login';
