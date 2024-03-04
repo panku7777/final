@@ -32,6 +32,22 @@ router.post("/add", async (req, res) => {
     }
 });
 
+
+
+router.get("/getalldownloads", async (req, res) => {
+    try {
+        // Retrieve all downloads from the database
+        const allDownloads = await Download.find();
+
+        // Respond with the array of downloads
+        res.status(200).json(allDownloads);
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ error: "Internal Server Error" });
+    }
+});
+
+
 router.get("/getdownloadsbyid/:userId", async (req, res) => {
     const userId = req.params.userId;
     try {
