@@ -30,7 +30,7 @@ function App(){
     <Route path="/list" element={<DownloadList/>}/>
     <Route path="/all" element={<BookDetails/>}/>
     <Route path="/signin" element={<Adlogin/>}/>
-    <Route path="/reg" element={<Adreg/>}/>
+    <Route path="/register" element={<Adreg/>}/>
       
       <Route path='/panel' element={<Pnael/>}/>
       <Route path="/home" element={<Homescreen/>}/>

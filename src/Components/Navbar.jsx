@@ -8,6 +8,11 @@ const isHomeScreen = window.location.href.includes("/book");
 const isBookScreen = window.location.href.includes("/download/");
 const isDownloadScreen = window.location.href.includes("/list");
 const isMainscreen= window.location.href.includes("/home")
+const Loginscreen= window.location.href.includes("/login")
+const isregscreen= window.location.href.includes("/reg")
+const isadmin=window.location.href.includes("/signin")
+const ispanel=window.location.href.includes("/panel")
+
 
 const TopNavbar = () => {
   const [showDropdown, setShowDropdown] = useState(false);
@@ -26,6 +31,10 @@ const TopNavbar = () => {
   const toggleDropdown = () => {
     setShowDropdown(!showDropdown);
   };
+  if(Loginscreen||isregscreen||isadmin||ispanel)
+  {
+    return null
+  }
 
   if (isHomeScreen || isBookScreen || isDownloadScreen || isMainscreen) {
     return (

@@ -1,17 +1,33 @@
 /* Homescreen.css */
 
-.homescreen-container {
+/* .homescreen-container {
     display: flex;
     flex-direction: column;
     align-items: center;
     margin-top: 10px;
-}
+} */
 
 .homescreen-search {
     display: flex;
     justify-content: center;
     margin-bottom: 20px;
 }
+
+/* Homescreen.css */
+
+.homescreen-container {
+    background-image: url('https://c4.wallpaperflare.com/wallpaper/728/926/542/library-ladders-candles-shelves-wallpaper-preview.jpg');
+    background-size: cover;
+    background-position: center top; /* Adjusted background position */
+    min-height: 100vh; /* Ensure the container covers the full viewport height */
+    display: flex;
+    flex-direction: column;
+    padding-top: 50px;
+  }
+  
+  /* Add other styles for your components as needed */
+  
+
 
 .homescreen-search .form-control,
 .homescreen-search select {

@@ -13,7 +13,7 @@ const Homescreen = () => {
   const [selectedLanguage, setSelectedLanguage] = useState('all');
   const [loading, setLoading] = useState(false);
 
-  const user = JSON.parse(localStorage.getItem('currentuser'));
+  const user = JSON.parse(localStorage.getItem('userData'));
   console.log(user)
 
   if (!user) {

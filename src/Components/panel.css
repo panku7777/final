@@ -24,7 +24,29 @@
   }
   
 
-  body {
+body {
     background-color: initial !important;
-    background-image: none !important; /* Revert to the default background color */
+    background-image: none !important /* Revert to the default background color */
+}
+
+.panel-navbar {
+  background-color: white; /* Set background color */
+  padding: 10px; /* Add padding */
+}
+
+.navbar-heading {
+  font-size: 20px; /* Optional: Adjust heading font size */
+}
+
+.navbar-menu {
+  float: right;
+}
+
+.logout-icon {
+  cursor: pointer;
+}
+
+
+nav{
+  color: black;
 }

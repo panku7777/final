@@ -24,7 +24,7 @@ function Adreg() {
       const response = await axios.post('http://localhost:3005/api/admin/register', newUser);
       const result = response.data;
       alert('Registration successful. Please log in.');
-      navigate('/login'); // Redirect to the login page after successful registration
+      navigate('/signin'); // Redirect to the login page after successful registration
     } catch (error) {
       console.error(error);
       alert('Registration Failed');
@@ -44,7 +44,7 @@ function Adreg() {
           required
         />
         <input
-          type="email"
+          type="string"
           placeholder="Enter Email"
           className="text-field"
           value={email}

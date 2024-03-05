@@ -1,6 +1,6 @@
 const mongoose=require('mongoose')
 
-const adminSchema=mongoose.Schema(
+const adSchema=mongoose.Schema(
 {
 
 
@@ -29,6 +29,6 @@ const adminSchema=mongoose.Schema(
     timestamps:true
 })
 
-const adminModel= mongoose.model('users', adminSchema)
+const adminModel= mongoose.model('admin',adSchema)
 
 module.exports=adminModel

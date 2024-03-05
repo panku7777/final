@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-
+const Admin = require("../model/ad"); // Import the Admin model
 
 router.post("/register", async (req, res) => {
   try {
@@ -26,13 +26,12 @@ router.post("/login", async (req, res) => {
     const foundAdmin = await Admin.findOne({ email });
 
     if (foundAdmin && foundAdmin.password === password) {
-      const AdminData = {
+      const adminData = {
         name: foundAdmin.name,
         email: foundAdmin.email,
-        
         _id: foundAdmin._id,
       };
-      res.json(AdminData);
+      res.json(adminData);
     } else {
       res.status(400).json({ message: "Login Failed: Admin not found or incorrect password" });
     }
@@ -43,12 +42,12 @@ router.post("/login", async (req, res) => {
 
 router.get('/', async (req, res) => {
   try {
-    const Admins = await Admin.find();
-    res.json(Admins);
+    const admins = await Admin.find(); // Change variable name to admins
+    res.json(admins); // Change variable name to admins
   } catch (error) {
     console.error(error);
     res.status(500).json({ message: 'Internal Server Error' });
   }
 });
 
-module.exports=router;
+module.exports = router;

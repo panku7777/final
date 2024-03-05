@@ -21,8 +21,8 @@ function Adlogin() {
     try {
       const response = await axios.post('http://localhost:3005/api/admin/login', user);
       const userData = response.data;
-      localStorage.setItem('userData', JSON.stringify(userData));
-      navigate('/home');
+      localStorage.setItem('AdminData', JSON.stringify(userData));
+      navigate('/panel');
     } catch (err) {
       console.error(err);
       alert('Login Failed');
