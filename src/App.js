@@ -11,6 +11,8 @@ import DownloadScreen from './Components/Screens/Downloadscreen'
 import DownloadList from './Components/Screens/Downloads'
 import BookDetails from './Components/Screens/Bookscreen'
 import Homescreen from './Components/Screens/Homescreen'
+import Adlogin from './Admin/Adlogin'
+import Adreg from './Admin/Adregister'
 
 
 
@@ -27,6 +29,8 @@ function App(){
       <Route path="/download/:bookid" element={<DownloadScreen/>}/>
     <Route path="/list" element={<DownloadList/>}/>
     <Route path="/all" element={<BookDetails/>}/>
+    <Route path="/signin" element={<Adlogin/>}/>
+    <Route path="/reg" element={<Adreg/>}/>
       
       <Route path='/panel' element={<Pnael/>}/>
       <Route path="/home" element={<Homescreen/>}/>

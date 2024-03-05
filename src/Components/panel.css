@@ -23,3 +23,8 @@
     /* Other styles if needed */
   }
   
+
+  body {
+    background-color: initial !important;
+    background-image: none !important; /* Revert to the default background color */
+}

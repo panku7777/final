@@ -1,19 +1,19 @@
 const express = require("express");
 const router = express.Router();
-const User = require("../model/user");
+
 
 router.post("/register", async (req, res) => {
   try {
     const { name, email, password } = req.body;
 
-    const newUser = new User({
+    const newAdmin = new Admin({
       name,
       email,
       password,
     });
 
-    const savedUser = await newUser.save();
-    res.json({ message: "User registered successfully" });
+    const savedAdmin = await newAdmin.save();
+    res.json({ message: "Admin registered successfully" });
   } catch (error) {
     res.status(400).json({ error: error.message });
   }
@@ -23,18 +23,18 @@ router.post("/login", async (req, res) => {
   try {
     const { email, password } = req.body;
 
-    const foundUser = await User.findOne({ email });
+    const foundAdmin = await Admin.findOne({ email });
 
-    if (foundUser && foundUser.password === password) {
-      const userData = {
-        name: foundUser.name,
-        email: foundUser.email,
+    if (foundAdmin && foundAdmin.password === password) {
+      const AdminData = {
+        name: foundAdmin.name,
+        email: foundAdmin.email,
         
-        _id: foundUser._id,
+        _id: foundAdmin._id,
       };
-      res.json(userData);
+      res.json(AdminData);
     } else {
-      res.status(400).json({ message: "Login Failed: User not found or incorrect password" });
+      res.status(400).json({ message: "Login Failed: Admin not found or incorrect password" });
     }
   } catch (error) {
     res.status(400).json({ error: error.message });
@@ -43,12 +43,12 @@ router.post("/login", async (req, res) => {
 
 router.get('/', async (req, res) => {
   try {
-    const users = await User.find();
-    res.json(users);
+    const Admins = await Admin.find();
+    res.json(Admins);
   } catch (error) {
     console.error(error);
     res.status(500).json({ message: 'Internal Server Error' });
   }
 });
 
-module.exports = router;
+module.exports=router;
