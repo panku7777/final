@@ -52,7 +52,7 @@ function Loginscreen() {
         </button>
         <br />
         <p className="typography">
-          Not a user? <a href="/signup">Sign up</a>
+          Not a user? <a href="/reg">Sign up</a>
         </p>
       </form>
     </div>

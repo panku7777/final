@@ -12,12 +12,14 @@ function DownloadList() {
       try {
         setLoading(true);
         // Fetch userId from localStorage
-        const userId = JSON.parse(localStorage.getItem('currentuser'))._id;
+        const userId = JSON.parse(localStorage.getItem('AdminData'))._id;
+        // console.log(JSON.parse(localStorage.getItem('currentuser')))
         const response = await axios.get(`http://localhost:3005/api/download/getalldownloads`);
         setDownloads(response.data);
         setLoading(false);
       } catch (error) {
         setError('Failed to fetch downloads');
+        console.log(error);
         setLoading(false);
       }
     };

@@ -17,7 +17,7 @@ function DownloadList() {
         setDownloads(response.data);
         setLoading(false);
       } catch (error) {
-        setError('Failed to fetch downloads');
+        console.error(error)
         setLoading(false);
       }
     };
