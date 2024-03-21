@@ -25,12 +25,15 @@ const Homescreen = () => {
       try {
         setLoading(true);
         
-         const roomData= (await axios.get('http://localhost:3005/api/books/getallbooks')).data;
-          const genreData=await (await axios.get('http://localhost:3005/api/genres')).data
-          const languageData=(await axios.get('http://localhost:3005/api/languages')).data
-    
-        setBooks(roomData);
-        setDuplicateBooks(roomData);
+        const roomData = (await axios.get('http://localhost:3005/api/books/getallbooks')).data;
+        const genreData = await (await axios.get('http://localhost:3005/api/genres')).data;
+        const languageData = (await axios.get('http://localhost:3005/api/languages')).data;
+  
+        // Filter out books where display is false
+        const filteredRoomData = roomData.filter(book => book.display !== false);
+        
+        setBooks(filteredRoomData);
+        setDuplicateBooks(filteredRoomData);
         setGenres(genreData);
         setLanguages(languageData);
         setLoading(false);
@@ -39,10 +42,10 @@ const Homescreen = () => {
         setLoading(false);
       }
     };
-
+  
     fetchData();
   }, []);
-
+  
   function filterBySearch() {
     const tempBooks = duplicateBooks.filter(book =>
       book.title.toLowerCase().includes(searchKey.toLowerCase())

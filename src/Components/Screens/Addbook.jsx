@@ -89,6 +89,7 @@ function Addbook() {
     try {
       const response = await axios.post('http://localhost:3005/api/books/addbook', formData);
       console.log(response.data);
+      alert("book added")
       // Handle success if needed
     } catch (error) {
       console.error(error);

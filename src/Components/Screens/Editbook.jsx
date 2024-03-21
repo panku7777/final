@@ -6,6 +6,8 @@ const { Option } = Select;
 
 function EditBook({ bookId }) {
   const [loading, setLoading] = useState(false);
+  const [genres, setGenres] = useState([]);
+  const [languages, setLanguages] = useState([]);
   const [bookDetails, setBookDetails] = useState({
     title: '',
     author: '',
@@ -15,13 +17,33 @@ function EditBook({ bookId }) {
     language: '',
     publisher: '',
     description: '',
-    coverImageURL: '',
-    freeview1Url: '',
-    freeview2Url: '',
     coverImageFile: null,
     freeview1File: null,
     freeview2File: null,
   });
+
+  useEffect(() => {
+    const fetchGenres = async () => {
+      try {
+        const response = await axios.get('http://localhost:3005/api/genres');
+        setGenres(response.data);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    const fetchLanguages = async () => {
+      try {
+        const response = await axios.get('http://localhost:3005/api/languages');
+        setLanguages(response.data);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    fetchGenres();
+    fetchLanguages();
+  }, []);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -30,7 +52,6 @@ function EditBook({ bookId }) {
         setBookDetails(response.data);
       } catch (error) {
         console.error(error);
-        // Handle error
       }
     };
     
@@ -75,7 +96,6 @@ function EditBook({ bookId }) {
     } catch (error) {
       console.error(error);
       setLoading(false);
-      // Handle error
     }
   };
 
@@ -86,10 +106,10 @@ function EditBook({ bookId }) {
     });
   };
 
-  const handleInputChange = (e, key) => {
+  const handleInputChange = (value, key) => {
     setBookDetails({
       ...bookDetails,
-      [key]: e.target.value,
+      [key]: value,
     });
   };
 
@@ -100,56 +120,64 @@ function EditBook({ bookId }) {
       <Input
         placeholder='Book Title'
         value={bookDetails.title}
-        onChange={(e) => handleInputChange(e, 'title')}
+        onChange={(e) => handleInputChange(e.target.value, 'title')}
       />
 
       <label>Author:</label>
       <Input
         placeholder='Author'
         value={bookDetails.author}
-        onChange={(e) => handleInputChange(e, 'author')}
+        onChange={(e) => handleInputChange(e.target.value, 'author')}
       />
 
       <label>ISBN:</label>
       <Input
         placeholder='ISBN'
         value={bookDetails.ISBN}
-        onChange={(e) => handleInputChange(e, 'ISBN')}
+        onChange={(e) => handleInputChange(e.target.value, 'ISBN')}
       />
 
       <label>Genre:</label>
-      <Input
-        placeholder='Genre'
+      <Select
+        placeholder='Select Genre'
         value={bookDetails.genre}
-        onChange={(e) => handleInputChange(e, 'genre')}
-      />
+        onChange={(value) => handleInputChange(value, 'genre')}
+      >
+        {genres.map(genre => (
+          <Option key={genre._id} value={genre.genre}>{genre.genre}</Option>
+        ))}
+      </Select>
 
       <label>Publication Date:</label>
       <Input
         placeholder='Publication Date'
         value={bookDetails.publicationDate}
-        onChange={(e) => handleInputChange(e, 'publicationDate')}
+        onChange={(e) => handleInputChange(e.target.value, 'publicationDate')}
       />
 
       <label>Language:</label>
-      <Input
-        placeholder='Language'
+      <Select
+        placeholder='Select Language'
         value={bookDetails.language}
-        onChange={(e) => handleInputChange(e, 'language')}
-      />
+        onChange={(value) => handleInputChange(value, 'language')}
+      >
+        {languages.map(language => (
+          <Option key={language._id} value={language.language}>{language.language}</Option>
+        ))}
+      </Select>
 
       <label>Publisher:</label>
       <Input
         placeholder='Publisher'
         value={bookDetails.publisher}
-        onChange={(e) => handleInputChange(e, 'publisher')}
+        onChange={(e) => handleInputChange(e.target.value, 'publisher')}
       />
 
       <label>Description:</label>
-      <Input
+      <Input.TextArea
         placeholder='Description'
         value={bookDetails.description}
-        onChange={(e) => handleInputChange(e, 'description')}
+        onChange={(e) => handleInputChange(e.target.value, 'description')}
       />
 
       <label>Cover Image:</label>

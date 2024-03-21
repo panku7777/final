@@ -135,7 +135,8 @@ router.put('/updatebook/:id', upload.fields([
   { name: 'freeview2', maxCount: 1 },
 ]), async (req, res) => {
   const bookId = req.params.id;
-  const updatedBookDetails = {}; // Initialize an empty object to store updated book details
+  const updatedBookDetails = req.body;
+  console.log(updatedBookDetails); // Initialize an empty object to store updated book details
   const imageFiles = req.files;
 
   try {
